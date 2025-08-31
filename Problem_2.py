@@ -39,6 +39,8 @@ Time: O(N), Space: O(N)
 
 '''
 from typing import List
+
+# lecture solution
 def nextGreaterElements(nums: List[int]) -> List[int]:
     N = len(nums)
     stack = [0] # index of first element in nums
@@ -61,6 +63,23 @@ def nextGreaterElements(nums: List[int]) -> List[int]:
         if i < N:
             stack.append(i)
     return result
+
+# my solution
+# def nextGreaterElements(nums: List[int]) -> List[int]:
+#     N = len(nums)
+#     stack = [0] # index of first element in nums
+#     result = [-1]*N
+#     filled = [False]*N
+#     for i in range(1,2*N+1):
+#         num = nums[i % N]
+#         while stack and num > nums[stack[-1]]:
+#             j = stack.pop()
+#             if not filled[j]:
+#                 result[j] = num
+#                 filled[j] = True
+#         if not filled[i%N]:
+#             stack.append(i%N)
+#     return result
 
 def run_nextGreaterElements():
     tests = [([1,2,3,4,3], [2,3,4,-1,4]),
